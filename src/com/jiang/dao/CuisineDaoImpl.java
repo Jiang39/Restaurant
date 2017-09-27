@@ -116,4 +116,35 @@ public class CuisineDaoImpl implements CuisineDaoI {
 		
 	}
 
+	/**
+	 * 根据菜系编号查询
+	 * @param cid 传入菜系编号
+	 * @return 返回菜系编号对应的的菜系集合
+	 */
+	public List<Cuisine> getCuisineListByCid(Integer cid) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Cuisine cuisine = null;
+		List<Cuisine> cList = new ArrayList<Cuisine>();
+		String sql = "select * from cuisine where cid = ? order by cid";
+		try {
+			pstmt = JDBCUtil.getConnection().prepareStatement(sql);
+			pstmt.setInt(1, cid);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				cuisine = new Cuisine(rs.getInt(1), rs.getString(2));
+				cList.add(cuisine);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(pstmt, rs);
+		}
+
+		return cList;
+	
+	}
+
 }

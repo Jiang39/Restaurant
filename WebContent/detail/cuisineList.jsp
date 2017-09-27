@@ -16,8 +16,11 @@
 <link rel="stylesheet" type="text/css" href="style/css/index_1.css" />
 <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript">
-function to_delete(){
-	
+function to_delete(cid){
+	location.href="<%=request.getContextPath()%>/cuisineServlet?method=delete&cid="+cid;
+}
+function to_update(cid){
+	location.href="updateCuisine.html?cid="+cid;
 }
 $(function(){
 	
@@ -29,7 +32,8 @@ $(function(){
 		success:function(obj){
 			
 			for(var i in obj){
-				$("#TableData").append("<tr class='TableDetail1'><td>"+obj[i].cid+"</td><td>"+obj[i].cname+"</td><td><a href='updateFood.html' class='FunctionButton'>更新</a><a class='FunctionButton' onClick='return delConfirm();' href='<%=request.getContextPath()%>/cuisineServlet?method=delete&cid='"+obj[i].cid+">删除</a></td></tr>");
+// 				return delConfirm();
+				$("#TableData").append("<tr class='TableDetail1'><td>"+obj[i].cid+"</td><td>"+obj[i].cname+"</td><td><a onClick='to_update("+obj[i].cid+")' class='FunctionButton'>更新</a><a class='FunctionButton' onClick='to_delete("+obj[i].cid+")' >删除</a></td></tr>");
 			}
 			
 		}

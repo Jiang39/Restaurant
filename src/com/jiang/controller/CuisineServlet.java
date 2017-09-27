@@ -33,6 +33,7 @@ public class CuisineServlet extends HttpServlet {
 			} else if ("delete".equals(method)) {
 				Integer cid = Integer.parseInt(request.getParameter("cid"));
 				delete(cid);
+//				System.out.println(cid);
 				response.sendRedirect(request.getContextPath() + "/detail/cuisineList.jsp");
 			}
 

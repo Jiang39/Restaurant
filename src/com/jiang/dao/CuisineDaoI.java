@@ -23,6 +23,12 @@ public interface CuisineDaoI {
 	 */
 	List<Cuisine> getCuisineListByCname(String cname);
 	/**
+	 * 根据菜系编号查询
+	 * @param cid 传入菜系编号
+	 * @return 返回菜系编号对应的的菜系集合
+	 */
+	List<Cuisine> getCuisineListByCid(Integer cid);
+	/**
 	 * 插入一条数据
 	 * @param cname
 	 */
