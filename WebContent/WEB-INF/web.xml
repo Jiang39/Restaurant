@@ -9,4 +9,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>FoodServlet</display-name>
+    <servlet-name>FoodServlet</servlet-name>
+    <servlet-class>com.jiang.controller.FoodServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FoodServlet</servlet-name>
+    <url-pattern>/foodServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CuisineServlet</display-name>
+    <servlet-name>CuisineServlet</servlet-name>
+    <servlet-class>com.jiang.controller.CuisineServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CuisineServlet</servlet-name>
+    <url-pattern>/cuisineServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

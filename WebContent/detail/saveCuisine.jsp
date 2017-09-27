@@ -1,13 +1,11 @@
-﻿
+﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
     <!-- 包含公共的JSP代码片段 -->
 	
 <title>无线点餐平台</title>
-
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="style/js/jquery.js"></script>
 <script type="text/javascript" src="style/js/page_common.js"></script>
@@ -37,7 +35,7 @@
 <!-- 主内容区域（数据列表或表单显示） -->
 <div id="MainArea">
 	<!-- 表单内容 -->
-	<form action="#" method="post">
+	<form action="<%=request.getContextPath() %>/cuisineServlet" method="post">
 	
 		<!-- 本段标题（分段标题） -->
 		<div class="ItemBlock_Title">
@@ -51,8 +49,7 @@
 						<tr>
 							<td width="80px">菜系名称</td>
 							<td>
-								<input type="text" name="name" class="InputStyle" value=""/> *
-								<input type="hidden" name="cid" value="" />
+								<input type="text" name="cname" class="InputStyle" value=""/> *
 							</td>
 						</tr>
 					</table>
@@ -62,13 +59,9 @@
 		
 		<!-- 表单操作 -->
 		<div id="InputDetailBar">
-			
-				
-				
+					<input type="hidden" name="method" value="insert">
 					 <input type="submit" value="添加" class="FunctionButtonInput">
-				
-			
-            <a href="javascript:history.go(-1);" class="FunctionButton">返回</a>
+		             <a href="javascript:history.go(-1);" class="FunctionButton">返回</a>
         </div>
 	</form>
 	

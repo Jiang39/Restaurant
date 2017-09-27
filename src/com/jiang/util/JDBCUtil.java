@@ -19,8 +19,12 @@ public class JDBCUtil {
 		Connection conn = null;
 
 		try {
+			Class.forName(driver);
 			conn = DriverManager.getConnection(url, username, password);
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

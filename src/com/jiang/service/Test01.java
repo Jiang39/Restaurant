@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.jiang.dao.CuisineDaoImpl;
 import com.jiang.dao.FoodDaoImpl;
+import com.jiang.pojo.Cuisine;
 import com.jiang.pojo.Food;
 
 public class Test01 {
@@ -38,5 +40,31 @@ public class Test01 {
 	public void delete(){
 		FoodDaoImpl f = new FoodDaoImpl();
 		f.delete(23);
+	}
+	@Test
+	public void getCuisineList(){
+		CuisineDaoImpl C = new CuisineDaoImpl();
+		List<Cuisine> cuisineList = C.getCuisineList();
+		for (Cuisine cuisine : cuisineList) {
+			System.out.println(cuisine);
+		}
+	}
+	@Test
+	public void getCuisineListByCname(){
+		CuisineDaoImpl C = new CuisineDaoImpl();
+		List<Cuisine> cuisineList = C.getCuisineListByCname("东");
+		for (Cuisine cuisine : cuisineList) {
+			System.out.println(cuisine);
+		}
+	}
+	@Test
+	public void insertCuisine(){
+		CuisineDaoImpl C = new CuisineDaoImpl();
+		C.insert("鲁菜");
+	}
+	@Test
+	public void deleteCuisine(){
+		CuisineDaoImpl C = new CuisineDaoImpl();
+		C.delete(5);
 	}
 }

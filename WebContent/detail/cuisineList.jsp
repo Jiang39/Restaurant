@@ -1,4 +1,5 @@
-﻿
+﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -13,6 +14,28 @@
 <script type="text/javascript" src="style/js/page_common.js"></script>
 <link href="style/css/common_style_blue.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="style/css/index_1.css" />
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+function to_delete(){
+	
+}
+$(function(){
+	
+	$.ajax({
+		url:"<%=request.getContextPath()%>/cuisineServlet?method=getList",
+		type:"post",
+		//data:"",
+		dataType:"json",
+		success:function(obj){
+			
+			for(var i in obj){
+				$("#TableData").append("<tr class='TableDetail1'><td>"+obj[i].cid+"</td><td>"+obj[i].cname+"</td><td><a href='updateFood.html' class='FunctionButton'>更新</a><a class='FunctionButton' onClick='return delConfirm();' href='<%=request.getContextPath()%>/cuisineServlet?method=delete&cid='"+obj[i].cid+">删除</a></td></tr>");
+			}
+			
+		}
+		
+	});})
+</script>
 </head>
 <body>
 	<!-- 页面标题 -->
@@ -49,48 +72,14 @@
 			<!--显示数据列表 -->
 			<tbody id="TableData">
 				
-					<tr>
-						<td>1</td>
-						<td>粤菜</td>
-						<td>
-							<a href="updateCuisine.html" class="FunctionButton">更新</a> 
-							<a href="#" class="FunctionButton">删除</a>
-						</td>
-					</tr>
-				
-					<tr>
-						<td>2</td>
-						<td>川菜</td>
-						<td>
-							<a href="#" class="FunctionButton">更新</a> 
-							<a href="#" class="FunctionButton">删除</a>
-						</td>
-					</tr>
-				
-					<tr>
-						<td>3</td>
-						<td>湘菜</td>
-						<td>
-							<a href="#" class="FunctionButton">更新</a> 
-							<a href="#" class="FunctionButton">删除</a>
-						</td>
-					</tr>
-				
-					<tr>
-						<td>4</td>
-						<td>东北菜</td>
-						<td>
-							<a href="#" class="FunctionButton">更新</a> 
-							<a href="#" class="FunctionButton">删除</a>
-						</td>
-					</tr>
+					
 				
 			</tbody>
 		</table>
 		<!-- 其他功能超链接 -->
 		<div id="TableTail" align="center">
 			<div class="FunctionButton">
-				<a href="saveCuisine.html">添加</a>
+				<a href="saveCuisine.jsp">添加</a>
 			</div>
 		</div>
 	</div>
