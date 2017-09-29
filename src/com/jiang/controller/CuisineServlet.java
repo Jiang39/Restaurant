@@ -33,10 +33,46 @@ public class CuisineServlet extends HttpServlet {
 			} else if ("delete".equals(method)) {
 				Integer cid = Integer.parseInt(request.getParameter("cid"));
 				delete(cid);
-//				System.out.println(cid);
+				// System.out.println(cid);
+				response.sendRedirect(request.getContextPath() + "/detail/cuisineList.jsp");
+			} else if ("getListByCid".equals(method)) {
+				Integer cid = Integer.parseInt(request.getParameter("cid"));
+				// System.out.println(cid);
+				getListByCid(cid, response);
+			}else if("update".equals(method)){
+				Integer cid = Integer.parseInt(request.getParameter("cid"));
+				String cname=request.getParameter("cname");
+				update(cid,cname);
 				response.sendRedirect(request.getContextPath() + "/detail/cuisineList.jsp");
 			}
 
+		}
+	}
+	/**
+	 * 根据传入的菜系编号cid 修改对应的菜系名称
+	 * @param cid 需要修改的菜系的编号
+	 * @param cname 新的菜系名称
+	 */
+	private void update(Integer cid, String cname) {
+		// TODO Auto-generated method stub
+		CuisineServiceI c = new CuisineServiceImpl();
+		c.update(cid, cname);	
+	}
+
+	/**
+	 * 根据菜系编号cid查询一条菜系信息
+	 * 
+	 * @param cid
+	 */
+	private void getListByCid(Integer cid, HttpServletResponse response) {
+		CuisineServiceI c = new CuisineServiceImpl();
+		String jsonString = JSONObject.toJSONString(c.getCuisineListByCid(cid));
+		// System.out.println(jsonString);
+		try {
+			response.getWriter().write(jsonString);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

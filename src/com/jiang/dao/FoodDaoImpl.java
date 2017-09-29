@@ -172,4 +172,39 @@ public class FoodDaoImpl implements FoodDaoI {
 		
 	}
 
+	/**
+	 * 根据fid查询一条数据
+	 * @param fid 菜品编号
+	 * @return 返回一个类型为Food的List集合 存放的是所有的菜品编号为fid的菜品信息
+	 */
+	public List<Food> getFoodListByFid(Integer fid) {
+		PreparedStatement pstmt = null;
+		Food food = null;
+		ResultSet rs = null;
+		List<Food> foodList = new ArrayList<Food>();
+		// 查询语句
+		String sql = "SELECT f.fid,f.fname,c.cname,f.price,f.vipprice,f.url FROM food f,cuisine c WHERE c.cid=f.cid and f.fid=? ORDER BY f.fid";
+		// 获取数据库连接
+		try {
+			pstmt = JDBCUtil.getConnection().prepareStatement(sql);
+			pstmt.setInt(1, fid);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				// 将数据封装到food对象中
+				food = new Food(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getDouble(5),
+						rs.getString(6));
+				// 将对象存入List集合
+				foodList.add(food);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(pstmt, rs);
+		}
+
+		return foodList;
+	}
+
 }

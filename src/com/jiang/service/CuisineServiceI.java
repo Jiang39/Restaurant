@@ -42,4 +42,21 @@ public interface CuisineServiceI {
 	 */
 	void delete(Integer cid);
 
+	/**
+	 * 根据菜系编号查询
+	 * 
+	 * @param cid
+	 *            传入菜系编号
+	 * @return 返回菜系编号对应的的菜系集合
+	 */
+	List<Cuisine> getCuisineListByCid(Integer cid);
+	/**
+	 * 根据菜系编号修改一条数据
+	 * 
+	 * @param cid
+	 *            需要修改的菜系的编号
+	 * @param cname
+	 *            新的菜系名称
+	 */
+	void update(Integer cid, String cname);
 }

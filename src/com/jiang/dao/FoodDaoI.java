@@ -27,6 +27,15 @@ public interface FoodDaoI {
 	List<Food> getFoodListByFname(String fname);
 
 	/**
+	 * 根据fid查询一条数据
+	 * 
+	 * @param fid
+	 *            菜品编号
+	 * @return 返回一个类型为Food的List集合 存放的是所有的菜品编号为fid的菜品信息
+	 */
+	List<Food> getFoodListByFid(Integer fid);
+
+	/**
 	 * 添加一条数据
 	 * 
 	 * @param fname
@@ -59,9 +68,13 @@ public interface FoodDaoI {
 	 *            菜品图片路径
 	 */
 	void update(int fid, String fname, int cid, Double price, Double vipprice, String url);
+
 	/**
 	 * 删除一条记录
-	 * @param fid 需要删除的菜品的编号
+	 * 
+	 * @param fid
+	 *            需要删除的菜品的编号
 	 */
 	void delete(Integer fid);
+
 }

@@ -84,4 +84,16 @@ public class FoodServiceImpl implements FoodServiceI {
 		f.delete(fid);
 	}
 
+	/**
+	 * 根据fid查询一条数据
+	 * 
+	 * @param fid
+	 *            菜品编号
+	 * @return 返回一个类型为Food的List集合 存放的是所有的菜品编号为fid的菜品信息
+	 */
+	public List<Food> getFoodListByFid(Integer fid) {
+		// TODO Auto-generated method stub
+		return f.getFoodListByFid(fid);
+	}
+
 }

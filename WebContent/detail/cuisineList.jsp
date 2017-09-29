@@ -20,7 +20,7 @@ function to_delete(cid){
 	location.href="<%=request.getContextPath()%>/cuisineServlet?method=delete&cid="+cid;
 }
 function to_update(cid){
-	location.href="updateCuisine.html?cid="+cid;
+	location.href="updateCuisine.jsp?cid="+cid;
 }
 $(function(){
 	

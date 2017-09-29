@@ -51,4 +51,28 @@ public class CuisineServiceImpl implements CuisineServiceI {
 		c.delete(cid);
 	}
 
+	/**
+	 * 根据菜系编号查询
+	 * 
+	 * @param cid
+	 *            传入菜系编号
+	 * @return 返回菜系编号对应的的菜系集合
+	 */
+	public List<Cuisine> getCuisineListByCid(Integer cid) {
+		// TODO Auto-generated method stub
+		return c.getCuisineListByCid(cid);
+	}
+	/**
+	 * 根据菜系编号修改一条数据
+	 * 
+	 * @param cid
+	 *            需要修改的菜系的编号
+	 * @param cname
+	 *            新的菜系名称
+	 */
+	public void update(Integer cid, String cname) {
+		// TODO Auto-generated method stub
+		c.update(cid, cname);
+	}
+
 }

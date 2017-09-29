@@ -17,6 +17,12 @@
 <link rel="stylesheet" type="text/css" href="style/css/index_1.css" />
 <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript">
+function to_delete(fid){
+	location.href="<%=request.getContextPath()%>/foodServlet?method=delete&fid="+fid;
+}
+function to_update(fid){
+	location.href="<%=request.getContextPath()%>/detail/updateFood.jsp?fid="+fid;
+}
 $(function(){
 	
 	$.ajax({
@@ -27,7 +33,7 @@ $(function(){
 		success:function(obj){
 			
 			for(var i in obj){
-				$("#TableData").append("<tr class='TableDetail1'><td>"+obj[i].fid+"</td><td>"+obj[i].fname+"</td><td>"+obj[i].cname+"</td><td>"+obj[i].price+"</td><td>"+obj[i].vipprice+"</td><td><a href='updateFood.html' class='FunctionButton'>更新</a><a class='FunctionButton' onClick='return delConfirm();' href='/wirelessplatform/food.html?method=delete&id=1'>删除</a></td></tr>");
+				$("#TableData").append("<tr class='TableDetail1'><td>"+obj[i].fid+"</td><td>"+obj[i].fname+"</td><td>"+obj[i].cname+"</td><td>"+obj[i].price+"</td><td>"+obj[i].vipprice+"</td><td><a onClick='to_update("+obj[i].fid+")'  class='FunctionButton'>更新</a><a class='FunctionButton' onClick='to_delete("+obj[i].fid+")' >删除</a></td></tr>");
 			}
 			
 		}
@@ -74,7 +80,7 @@ $(function(){
 			</thead>
 			<!--显示数据列表 -->
 			<tbody id="TableData">
-
+<!-- 
 				<tr class="TableDetail1">
 					<td>1&nbsp;</td>
 					<td>白灼虾&nbsp;</td>
@@ -84,7 +90,7 @@ $(function(){
 					<td><a href="updateFood.html" class="FunctionButton">更新</a> <a
 						href='/wirelessplatform/food.html?method=delete&id=1'
 						onClick='return delConfirm();' class='FunctionButton'>删除</a></td>
-				</tr>
+				</tr> -->
 
 
 			</tbody>
@@ -93,7 +99,7 @@ $(function(){
 		<!-- 其他功能超链接 -->
 		<div id="TableTail" align="center">
 			<div class="FunctionButton">
-				<a href="saveFood.html">添加</a>
+				<a href="saveFood.jsp">添加</a>
 			</div>
 		</div>
 	</div>

@@ -61,5 +61,12 @@ public interface FoodServiceI {
 	 *            需要删除的菜品的编号
 	 */
 	void delete(Integer fid);
-
+	/**
+	 * 根据fid查询一条数据
+	 * 
+	 * @param fid
+	 *            菜品编号
+	 * @return 返回一个类型为Food的List集合 存放的是所有的菜品编号为fid的菜品信息
+	 */
+	List<Food> getFoodListByFid(Integer fid);
 }

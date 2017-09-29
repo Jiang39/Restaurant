@@ -45,7 +45,7 @@ public class CuisineDaoImpl implements CuisineDaoI {
 	}
 
 	/**
-	 * 
+	 * 根据菜系名称模糊查询
 	 * @param cname
 	 * @return
 	 */
@@ -145,6 +145,28 @@ public class CuisineDaoImpl implements CuisineDaoI {
 
 		return cList;
 	
+	}
+
+	/**
+	 * 根据传入的菜系编号cid 修改对应的菜系名称
+	 * @param cid 需要修改的菜系的编号
+	 * @param cname 新的菜系名称
+	 */
+	public void update(Integer cid, String cname) {
+		PreparedStatement pstmt=null;
+		String sql="update cuisine set cname=? where cid=?";
+		try {
+			pstmt=JDBCUtil.getConnection().prepareStatement(sql);
+			pstmt.setString(1, cname);
+			pstmt.setInt(2, cid);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		
 	}
 
 }
